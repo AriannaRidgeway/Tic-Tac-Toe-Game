@@ -1,0 +1,351 @@
+/*System.out.println(" | | ");
+System.out.println("-+-+-");
+System.out.println(" | | ");
+System.out.println("-+-+-");
+System.out.println(" | | ");
+*/
+import java.util.*;
+public class Game{
+private static String one;
+private static String two;
+private static String three;
+private static String four;
+private static String five;
+private static String six;
+private static String seven;
+private static String eight;
+private static String nine;
+
+  //returns string whether the number choses is okay or if they need to pick again 
+//checks of number chosen by user works true or false
+
+public Game(String one, String two, String three, String four, String five, String six, String seven, String eight, String nine){
+  this.one = one;
+  this.two = two;
+  this.three = three;
+  this.four = four;
+  this.five = five;
+  this.six = six;
+  this.seven = seven;
+  this.eight = eight;
+  this.nine = nine;
+}
+
+public static boolean canSetNum(String pos){
+    if (pos.equals("1")){
+    if (!(one.equals("O") || one.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("2")){
+    if (!(two.equals("O") || two.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("3")){
+    if (!(three.equals("O") || three.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("4")){
+    if (!(four.equals("O") || four.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("5")){
+    if (!(five.equals("O") || five.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("6")){
+    if (!(six.equals("O") || six.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("7")){
+    if (!(seven.equals("O") || seven.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("8")){
+    if (!(eight.equals("O") || eight.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  }
+   else if (pos.equals("9")){
+    if (!(nine.equals("O") || nine.equals("X"))){
+      return true;}
+    else{
+      return false;}
+  } 
+   return false;
+}
+  
+  public static String setNum(String pos){
+  if (canSetNum(pos)){
+    return "good";}
+  else{
+    return "pick again";}
+}
+     
+  
+//updates board with current values for one-nine
+public static void xUpdateBoard(String pos){  
+if (pos.equals("1")&&canSetNum("1")){
+      one = "X";}
+ if (pos.equals("2")&&canSetNum("2")){
+      two = "X";}
+ if (pos.equals("3")&&canSetNum("3")){
+      three = "X";}
+if (pos.equals("4")&&canSetNum("4")){
+      four = "X";}
+if (pos.equals("5")&&canSetNum("5")){
+      five = "X";}
+if (pos.equals("6")&&canSetNum("6")){
+      six = "X";}
+if (pos.equals("7")&&canSetNum("7")){
+      seven = "X";}
+if (pos.equals("8")&&canSetNum("8")){
+      eight = "X";}
+if (pos.equals("9")&&canSetNum("9")){
+      nine = "X";}
+}
+
+//returns true or false, if O won or not
+public static boolean oWin(){
+  if (one.equals("O") && two.equals("O") && three.equals("O")){
+    return true;}
+  else if (four.equals("O") && five.equals("O") && six.equals("O")){
+    return true;}
+  else if (seven.equals("O") && eight.equals("O") && nine.equals("O")){
+    return true;}
+  else if (one.equals("O") && four.equals("O") && seven.equals("O")){
+    return true;}
+  else if (two.equals("O") && five.equals("O") && eight.equals("O")){
+    return true;}
+  else if (three.equals("O") && six.equals("O") && nine.equals("O")){
+    return true;}
+  else if (one.equals("O") && five.equals("O") && nine.equals("O")){
+    return true;}
+  else if (three.equals("O") && five.equals("O") && seven.equals("O")){
+    return true;}
+  else{
+    return false;}
+}
+
+//return true or false if X won or not
+public static boolean xWin(){
+if (one.equals("X") && two.equals("X") && three.equals("X")){
+    return true;} 
+  else if (four.equals("X") && five.equals("X") && six.equals("X")){
+    return true;}
+  else if (seven.equals("X") && eight.equals("X") && nine.equals("X")){
+    return true;}
+  else if (one.equals("X") && four.equals("X") && seven.equals("X")){
+    return true;}
+  else if (two.equals("X") && five.equals("X") && eight.equals("X")){
+    return true;}
+  else if (three.equals("X") && six.equals("X") && nine.equals("X")){
+    return true;}
+  else if (one.equals("X") && five.equals("X") && nine.equals("X")){
+    return true;}
+  else if (three.equals("X") && five.equals("X") && seven.equals("X")){
+    return true;}
+  else{
+    return false;}
+}
+
+
+  //returns string of who won or if no one has won yet
+  public static String winYet(){
+  if (xWin()){
+    return "X win";}
+  if (oWin()){
+    return "O win";}
+  else{
+    return "no win yet";}
+}
+  public static String getGameBoard(String one, String two, String three, String four, String five, String six, String seven, String eight, String nine){
+  return one + "|" + two + "|" + three + "\n"  + 
+    "-+-+-\n" + four + "|" + five + "|" + six + "\n" + 
+    "-+-+-\n" + seven + "|" + eight + "|" + nine;
+}
+  public static void oUpdateBoard(){
+     if (one.equals("O")&&two.equals("O")&&!(three.equals("X")||three.equals("O"))){
+      three = "O";}
+      else if (three.equals("O")&&two.equals("O")&&!(one.equals("X")||one.equals("O"))){
+      one = "O";}
+      else if (four.equals("O")&&five.equals("O")&&!(six.equals("X")||six.equals("O"))){
+      six = "O";}
+      else if (six.equals("O")&&five.equals("O")&&!(four.equals("X")||four.equals("O"))){
+      four = "O";}
+      else if (seven.equals("O")&&eight.equals("O")&&!(nine.equals("X")||nine.equals("O"))){
+      nine = "O";}
+      else if (nine.equals("O")&&eight.equals("O")&&!(seven.equals("X")||seven.equals("O"))){
+        seven = "O";}
+      else if (one.equals("O")&&three.equals("O")&&!(two.equals("X")||two.equals("O"))){
+      two = "O";}
+      else if (four.equals("O")&&six.equals("O")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (seven.equals("O")&&nine.equals("O")&&!(eight.equals("X")||eight.equals("O"))){
+      eight = "O";}
+      else if (one.equals("O")&&four.equals("O")&&!(seven.equals("X")||seven.equals("O"))){
+      seven = "O";}
+      else if (seven.equals("O")&&four.equals("O")&&!(one.equals("X")||one.equals("O"))){
+      one = "O";}
+      else if (seven.equals("O")&&one.equals("O")&&!(four.equals("X")||four.equals("O"))){
+      four = "O";}
+      else if (two.equals("O")&&eight.equals("O")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (two.equals("O")&&five.equals("O")&&!(eight.equals("X")||eight.equals("O"))){
+      eight = "O";}
+      else if (five.equals("O")&&eight.equals("O")&&!(two.equals("X")||two.equals("O"))){
+      two = "O";}
+      else if (six.equals("O")&&nine.equals("O")&&!(three.equals("X")||three.equals("O"))){
+      three = "O";}
+      else if (nine.equals("O")&&three.equals("O")&&!(six.equals("X")||six.equals("O"))){
+      six = "O";}
+      else if (six.equals("O")&&three.equals("O")&&!(nine.equals("X")||nine.equals("O"))){
+      nine = "O";}
+      else if (five.equals("O")&&nine.equals("O")&&!(one.equals("X")||one.equals("O"))){
+      one = "O";}
+      else if (one.equals("O")&&nine.equals("O")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (one.equals("O")&&five.equals("O")&&!(nine.equals("X")||nine.equals("O"))){
+      nine = "O";}
+      else if (seven.equals("O")&&five.equals("O")&&!(three.equals("X")||three.equals("O"))){
+      three = "O";}
+      else if (seven.equals("O")&&three.equals("O")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (three.equals("O")&&five.equals("O")&&!(seven.equals("X")||seven.equals("O"))){
+      seven = "O";}
+      else if (one.equals("O")&&two.equals("O")&&!(three.equals("X")||three.equals("O"))){
+        three = "O";}
+      else if (three.equals("X")&&two.equals("X")&&!(one.equals("X")||one.equals("O"))){
+      one = "O";}
+      else if (four.equals("X")&&five.equals("X")&&!(six.equals("X")||six.equals("O"))){
+      six = "O";}
+      else if (six.equals("X")&&five.equals("X")&&!(four.equals("X")||four.equals("O"))){
+      four = "O";}
+      else if (seven.equals("X")&&eight.equals("X")&&!(nine.equals("X")||nine.equals("O"))){
+      nine = "O";}
+      else if (nine.equals("X")&&eight.equals("X")&&!(seven.equals("X")||seven.equals("O"))){
+        seven = "O";}
+      else if (one.equals("X")&&three.equals("X")&&!(two.equals("X")||two.equals("O"))){
+      two = "O";}
+      else if (four.equals("X")&&six.equals("X")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (seven.equals("X")&&nine.equals("X")&&!(eight.equals("X")||eight.equals("O"))){
+      eight = "O";}
+      else if (one.equals("X")&&four.equals("X")&&!(seven.equals("X")||seven.equals("O"))){
+      seven = "O";}
+      else if (seven.equals("X")&&four.equals("X")&&!(one.equals("X")||one.equals("O"))){
+      one = "O";}
+      else if (seven.equals("X")&&one.equals("X")&&!(four.equals("X")||four.equals("O"))){
+      four = "O";}
+      else if (two.equals("X")&&eight.equals("X")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (two.equals("X")&&five.equals("X")&&!(eight.equals("X")||eight.equals("O"))){
+      eight = "O";}
+      else if (five.equals("X")&&eight.equals("X")&&!(two.equals("X")||two.equals("O"))){
+      two = "O";}
+      else if (six.equals("X")&&nine.equals("X")&&!(three.equals("X")||three.equals("O"))){
+      three = "O";}
+      else if (nine.equals("X")&&three.equals("X")&&!(six.equals("X")||six.equals("O"))){
+      six = "O";}
+      else if (six.equals("X")&&three.equals("X")&&!(nine.equals("X")||nine.equals("O"))){
+      nine = "O";}
+      else if (five.equals("X")&&nine.equals("X")&&!(one.equals("X")||one.equals("O"))){
+      one = "O";}
+      else if (one.equals("X")&&nine.equals("X")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (one.equals("X")&&five.equals("X")&&!(nine.equals("X")||nine.equals("O"))){
+      nine = "O";}
+      else if (seven.equals("X")&&five.equals("X")&&!(three.equals("X")||three.equals("O"))){
+      three = "O";}
+      else if (seven.equals("X")&&three.equals("X")&&!(five.equals("X")||five.equals("O"))){
+      five = "O";}
+      else if (three.equals("X")&&five.equals("X")&&!(seven.equals("X")||seven.equals("O"))){
+      seven = "O";}
+      else{
+        String n = "5";
+    while (!canSetNum(n)){
+    n = String.valueOf((int)(Math.random()*9+1));}
+  if (n.equals("1")){
+    one = "O";}
+  else if (n.equals("2")){
+    two = "O";}
+  else if (n.equals("3")){
+    three = "O";}
+  else if (n.equals("4")){
+    four = "O";}
+  else if (n.equals("5")){
+    five = "O";}
+  else if (n.equals("6")){
+    six = "O";}
+  else if (n.equals("7")){
+    seven = "O";}
+  else if (n.equals("8")){
+    eight = "O";}
+  else if (n.equals("9")){
+    nine = "O";}  
+    } 
+  }
+
+
+
+  public static void main(String[] args) {
+    one = "1" ;
+    two = "2";
+    three = "3";
+    four = "4";
+    five = "5";
+    six = "6";
+    seven = "7";
+    eight = "8";
+    nine = "9";
+
+    Game gb = new Game(one, two, three, four, five, six, seven, eight, nine);
+    System.out.println(gb.getGameBoard(one, two, three, four, five, six, seven, eight, nine));
+    
+    Scanner scanny = new Scanner(System.in);
+    String num; 
+    while (!(xWin()|| oWin())){
+    System.out.println("Enter a number 1-9");
+    num = scanny.nextLine();
+    while (!(canSetNum(num))){
+      System.out.println(setNum(num));
+      System.out.println(gb.getGameBoard(one, two, three, four, five, six, seven, eight, nine));
+      System.out.println("Enter a different number");
+      num = scanny.nextLine();
+    }
+    System.out.println(" ");
+    System.out.println("X turn");
+    System.out.println(" ");
+    gb.xUpdateBoard(num);
+    System.out.println(gb.getGameBoard(one, two, three, four, five, six, seven, eight, nine));
+    System.out.println(" ");
+    System.out.println("O turn");
+    System.out.println(" ");
+    gb.oUpdateBoard();
+    System.out.println(gb.getGameBoard(one, two, three, four, five, six, seven, eight, nine));
+    }
+    System.out.println(winYet());
+  
+}
+}
+
+
+   
+
+
+
+
